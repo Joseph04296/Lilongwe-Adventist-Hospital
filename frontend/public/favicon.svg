@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="lah-favicon" x1="4" y1="2" x2="44" y2="46" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#005EB8"/>
+      <stop offset="1" stop-color="#002D72"/>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="14" fill="url(#lah-favicon)"/>
+  <rect x="0.6" y="0.6" width="46.8" height="46.8" rx="13.4" fill="none" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="1.2"/>
+  <path d="M8.5 25H16.5L20 18.5L24.5 31.5L28 22.5L30.5 27.5H39.5" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="39.5" cy="25" r="2.2" fill="#2FB8A8" stroke="#FFFFFF" stroke-width="1.1"/>
+</svg>
