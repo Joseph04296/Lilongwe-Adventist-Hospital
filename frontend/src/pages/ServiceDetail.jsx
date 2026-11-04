@@ -1,7 +1,5 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { ArrowRight, CalendarCheck, Check, Clock, MapPin, Phone, Stethoscope } from 'lucide-react'
-import PageHero from '../components/PageHero'
-import CtaBand from '../components/CtaBand'
 import Button from '../components/Button'
 import Eyebrow from '../components/Eyebrow'
 import Reveal from '../components/Reveal'
@@ -20,17 +18,6 @@ export default function ServiceDetail() {
 
   return (
     <>
-      <PageHero
-        kicker="Our Services"
-        title={service.title}
-        text={service.overview}
-        photo={service.photo}
-        badge="By appointment"
-      >
-        <Button to="/book" variant="teal">Book an appointment <ArrowRight size={18} /></Button>
-        <Button to="/services" variant="ghostLight">All services</Button>
-      </PageHero>
-
       <section className="max-w-7xl mx-auto px-5 py-16 lg:py-24">
         <div className="grid lg:grid-cols-[minmax(0,1fr)_350px] gap-12 lg:gap-16">
           <article>
@@ -155,14 +142,6 @@ export default function ServiceDetail() {
           </aside>
         </div>
       </section>
-
-      <CtaBand
-        eyebrow="Appointments"
-        title="Ready to see a specialist?"
-        text="Book a consultation with our team and get clear guidance on the care you need."
-        photo="/images/happy-doc.jpg"
-        alt="A clinician at Lilongwe Adventist Hospital"
-      />
     </>
   )
 }

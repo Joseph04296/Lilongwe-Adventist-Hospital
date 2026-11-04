@@ -132,7 +132,7 @@ export const NAV = [['/', 'Home'], ['/about', 'About Us'], ['/services', 'Servic
 // General wellness content (demo copy — pending review by the hospital). Shape is CMS-ready.
 export const TIPS = [
   {
-    slug: 'stay-hydrated', icon: Droplets, tag: 'Everyday health', title: 'Stay hydrated', photo: P.water, date: '2026-09-18',
+    slug: 'stay-hydrated', icon: Droplets, tag: 'Everyday health', title: 'Stay hydrated', photo: '/images/water.jpg', date: '2026-09-18',
     text: 'Drink enough clean water through the day, especially in hot weather, to help your body work at its best.',
     overview: 'Water keeps every part of your body working properly. When you are active or the weather is hot, you lose more fluid than usual — and even mild dehydration can leave you tired, headachy or unable to concentrate.',
     points: [
@@ -152,7 +152,7 @@ export const TIPS = [
     ],
   },
   {
-    slug: 'keep-moving', icon: Activity, tag: 'Fitness', title: 'Keep moving', photo: P.exercise, date: '2026-08-21',
+    slug: 'keep-moving', icon: Activity, tag: 'Fitness', title: 'Keep moving', photo: '/images/fitness.jpg', date: '2026-08-21',
     text: 'A brisk walk most days supports your heart, mood and energy levels.',
     overview: 'Regular movement is one of the best things you can do for your health. You do not need a gym — walking, chores and everyday activity all count.',
     points: [
@@ -162,7 +162,7 @@ export const TIPS = [
     ],
   },
   {
-    slug: 'prioritise-sleep', icon: Moon, tag: 'Rest', title: 'Prioritise sleep', photo: P.sleep, date: '2026-08-07',
+    slug: 'prioritise-sleep', icon: Moon, tag: 'Rest', title: 'Prioritise sleep', photo: '/images/sleep.jpg', date: '2026-08-07',
     text: 'Most adults need 7–9 hours of sleep. A steady routine helps your body recover and stay well.',
     overview: 'Sleep is when your body repairs itself and your mind processes the day. Poor sleep over time affects mood, concentration and even how well your immune system works.',
     points: [
@@ -172,7 +172,7 @@ export const TIPS = [
     ],
   },
   {
-    slug: 'look-after-your-mind', icon: Brain, tag: 'Wellbeing', title: 'Look after your mind', photo: P.mind, date: '2026-07-24',
+    slug: 'look-after-your-mind', icon: Brain, tag: 'Wellbeing', title: 'Look after your mind', photo: '/images/mind.jpg', date: '2026-07-24',
     text: 'Managing stress, staying connected and asking for support matter just as much as physical health.',
     overview: 'Mental health is part of overall health. Stress, worry and low mood are common, and talking about them — with people you trust or with a professional — makes a real difference.',
     points: [
@@ -182,7 +182,7 @@ export const TIPS = [
     ],
   },
   {
-    slug: 'do-not-smoke', icon: ShieldCheck, tag: 'Prevention', title: 'Do not smoke', photo: P.smoke, date: '2026-07-10',
+    slug: 'do-not-smoke', icon: ShieldCheck, tag: 'Prevention', title: 'Do not smoke', photo: '/images/smoke.jpg', date: '2026-07-10',
     text: 'Stopping smoking is one of the biggest steps you can take to protect your health and those around you.',
     overview: 'Smoking harms almost every part of the body and increases the risk of serious illness, including heart and lung disease. It also affects the people around you through second-hand smoke. Quitting is hard, but support greatly improves your chances.',
     points: [

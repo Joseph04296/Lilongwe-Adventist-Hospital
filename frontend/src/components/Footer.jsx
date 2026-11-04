@@ -13,7 +13,7 @@ const FOOTER_SERVICES = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-primary-dark text-white/80">
+    <footer className="relative overflow-hidden bg-charcoal text-white/80">
       <LogoMark mono className="pointer-events-none absolute -bottom-20 -right-14 -z-10 h-72 w-72 text-white/[0.05] sm:h-80 sm:w-80 lg:h-[26rem] lg:w-[26rem]" />
       <div className="relative max-w-7xl mx-auto px-5 py-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-10 text-sm">
         <div>

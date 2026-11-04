@@ -11,6 +11,7 @@ import DoctorProfile from './pages/DoctorProfile'
 import Book from './pages/Book'
 import PatientInfo from './pages/PatientInfo'
 import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 import Admin from './admin/Admin'
 
 function SiteLayout() {
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="/doctors/:slug" element={<DoctorProfile />} />
         <Route path="/patient-info" element={<PatientInfo />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/book" element={<Book />} />
       </Route>
     </Routes>

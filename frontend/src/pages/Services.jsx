@@ -3,7 +3,6 @@ import PageHero from '../components/PageHero'
 import Section from '../components/Section'
 import SectionHeader from '../components/SectionHeader'
 import ServiceCard from '../components/ServiceCard'
-import PromoBand from '../components/PromoBand'
 import { SERVICES } from '../data/site'
 
 const ACCESS = [
@@ -42,8 +41,6 @@ export default function Services() {
           {SERVICES.map((s, i) => <ServiceCard key={s.slug} service={s} delay={(i % 3) * 100} />)}
         </div>
       </Section>
-
-      <PromoBand eyebrow="Need a hand?" title="Not sure which service to choose?" text="Send us an appointment request or call, and our team will point you to the right service and help you get prepared for your visit." />
     </>
   )
 }

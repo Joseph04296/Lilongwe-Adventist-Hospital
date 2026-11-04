@@ -10,30 +10,38 @@ const COOKIE = 'sh_admin'
 const STATUSES = ['pending', 'contacted', 'confirmed', 'completed', 'cancelled']
 const DUMMY_HASH = bcrypt.hashSync('not-a-real-password', 10)
 const limiter = (windowMin, max, error) => rateLimit({ windowMs: windowMin * 60_000, limit: max, standardHeaders: true, legacyHeaders: false, message: { error } })
+const asyncHandler = (handler) => (req, res, next) => Promise.resolve(handler(req, res, next)).catch(next)
 
 // Every protected endpoint checks the session itself; hiding pages in React is not security.
-const requireAuth = (roles) => async (req, res, next) => {
+const requireAuth = (roles) => asyncHandler(async (req, res, next) => {
+  const token = req.cookies[COOKIE]
+  if (!token) return res.status(401).json({ error: 'Not signed in' })
+
+  let payload
   try {
-    const token = req.cookies[COOKIE]
-    if (!token) return res.status(401).json({ error: 'Not signed in' })
-    const { id } = jwt.verify(token, process.env.JWT_SECRET)
-    const { rows } = await pool.query('select id, email, name, role, active from admin_users where id = $1', [id])
-    const u = rows[0]
-    if (!u || !u.active) return res.status(401).json({ error: 'Not signed in' })
-    if (roles && !roles.includes(u.role)) return res.status(403).json({ error: 'Not allowed' })
-    req.user = u
-    next()
-  } catch { res.status(401).json({ error: 'Not signed in' }) }
-}
+    payload = jwt.verify(token, process.env.JWT_SECRET)
+  } catch {
+    return res.status(401).json({ error: 'Not signed in' })
+  }
+  if (!payload || typeof payload !== 'object' || !payload.id) return res.status(401).json({ error: 'Not signed in' })
+
+  const { rows } = await pool.query('select id, email, name, role, active from admin_users where id = $1', [payload.id])
+  const u = rows[0]
+  if (!u || !u.active) return res.status(401).json({ error: 'Not signed in' })
+  if (roles && !roles.includes(u.role)) return res.status(403).json({ error: 'Not allowed' })
+  req.user = u
+  next()
+})
 
 const audit = (userId, action, entity, entityId, meta) =>
-  pool.query('insert into audit_logs (user_id, action, entity, entity_id, meta) values ($1,$2,$3,$4,$5)', [userId, action, entity, String(entityId), meta ?? null]).catch(() => {})
+  pool.query('insert into audit_logs (user_id, action, entity, entity_id, meta) values ($1,$2,$3,$4,$5)', [userId, action, entity, String(entityId), meta ?? null])
+    .catch((error) => console.error('Audit log write failed:', error.message))
 
 const r = Router()
 
 // ---------- Auth ----------
 const loginSchema = z.object({ email: z.string().email().max(200), password: z.string().min(1).max(200) })
-r.post('/auth/login', limiter(15, 10, 'Too many attempts. Try again later.'), async (req, res) => {
+r.post('/auth/login', limiter(15, 10, 'Too many attempts. Try again later.'), asyncHandler(async (req, res) => {
   const p = loginSchema.safeParse(req.body)
   if (!p.success) return res.status(400).json({ error: 'Enter a valid email and password' })
   const { rows } = await pool.query('select * from admin_users where email = $1', [p.data.email.toLowerCase()])
@@ -44,7 +52,7 @@ r.post('/auth/login', limiter(15, 10, 'Too many attempts. Try again later.'), as
   res.cookie(COOKIE, token, { httpOnly: true, sameSite: 'lax', secure: process.env.NODE_ENV === 'production', maxAge: 8 * 3600_000, path: '/' })
   audit(u.id, 'login', 'admin_users', u.id)
   res.json({ user: { id: u.id, email: u.email, name: u.name, role: u.role } })
-})
+}))
 r.post('/auth/logout', (req, res) => { res.clearCookie(COOKIE, { path: '/' }); res.json({ ok: true }) })
 r.get('/auth/me', requireAuth(), (req, res) => res.json({ user: req.user }))
 
@@ -54,13 +62,17 @@ const apptSchema = z.object({
   phone: z.string().trim().regex(/^[0-9+()\s-]{7,20}$/, 'Enter a valid phone number'),
   email: z.string().trim().email().max(200).optional().or(z.literal('')),
   service: z.string().trim().max(100).optional(),
-  preferred_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional().or(z.literal('')),
+  preferred_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine((value) => {
+    const [year, month, day] = value.split('-').map(Number)
+    const date = new Date(Date.UTC(year, month - 1, day))
+    return date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day
+  }, 'Enter a valid date').optional().or(z.literal('')),
   preferred_time: z.string().trim().max(40).optional(),
   message: z.string().trim().max(500).optional(),
   website: z.string().optional(), // honeypot
 })
 const newRef = () => 'SH-' + Array.from(crypto.randomBytes(6), (b) => 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[b % 32]).join('')
-r.post('/appointments', limiter(60, 10, 'Too many requests. Please call us instead.'), async (req, res) => {
+r.post('/appointments', limiter(60, 10, 'Too many requests. Please call us instead.'), asyncHandler(async (req, res) => {
   const p = apptSchema.safeParse(req.body)
   if (!p.success) return res.status(400).json({ error: p.error.issues[0]?.message || 'Please check your details' })
   const d = p.data
@@ -72,10 +84,10 @@ r.post('/appointments', limiter(60, 10, 'Too many requests. Please call us inste
     [reference, d.name, d.phone, d.email || null, d.service || null, d.preferred_date || null, d.preferred_time || null, d.message || null]
   )
   res.status(201).json({ reference })
-})
+}))
 
 // ---------- Admin: dashboard + appointments ----------
-r.get('/admin/stats', requireAuth(), async (req, res) => {
+r.get('/admin/stats', requireAuth(), asyncHandler(async (req, res) => {
   const [by, week, recent] = await Promise.all([
     pool.query('select status, count(*)::int as n from appointments group by status'),
     pool.query("select count(*)::int as n from appointments where created_at > now() - interval '7 days'"),
@@ -84,9 +96,9 @@ r.get('/admin/stats', requireAuth(), async (req, res) => {
   const counts = Object.fromEntries(STATUSES.map((s) => [s, 0]))
   by.rows.forEach((x) => (counts[x.status] = x.n))
   res.json({ counts, total: Object.values(counts).reduce((a, b) => a + b, 0), lastWeek: week.rows[0].n, recent: recent.rows })
-})
+}))
 
-r.get('/admin/appointments', requireAuth(), async (req, res) => {
+r.get('/admin/appointments', requireAuth(), asyncHandler(async (req, res) => {
   const status = STATUSES.includes(req.query.status) ? req.query.status : null
   const q = String(req.query.q || '').trim().slice(0, 60)
   const { rows } = await pool.query(
@@ -96,14 +108,14 @@ r.get('/admin/appointments', requireAuth(), async (req, res) => {
     [status, q ? `%${q}%` : null]
   )
   res.json({ appointments: rows })
-})
+}))
 
 const patchSchema = z.object({
   status: z.enum(STATUSES).optional(),
   internal_notes: z.string().max(1000).nullable().optional(),
   scheduled_for: z.string().datetime({ offset: true }).nullable().optional(),
 })
-r.patch('/admin/appointments/:id', requireAuth(), async (req, res) => {
+r.patch('/admin/appointments/:id', requireAuth(), asyncHandler(async (req, res) => {
   const id = Number(req.params.id)
   const p = patchSchema.safeParse(req.body)
   if (!Number.isInteger(id) || !p.success) return res.status(400).json({ error: 'Invalid update' })
@@ -116,6 +128,6 @@ r.patch('/admin/appointments/:id', requireAuth(), async (req, res) => {
   )
   if (p.data.status && p.data.status !== cur.status) audit(req.user.id, 'appointment_status', 'appointments', id, { from: cur.status, to: p.data.status })
   res.json({ appointment: rows[0] })
-})
+}))
 
 export default r

@@ -8,8 +8,9 @@ export default function CtaBand({ eyebrow, title, text, photo = P.emergency, alt
   return (
     <section className="overflow-hidden">
       <div className="grid lg:grid-cols-2 lg:min-h-[520px]">
-        <div className="relative flex items-center bg-gradient-to-br from-primary via-primary to-primary-dark px-5 py-16 sm:px-8 lg:py-24 lg:pl-[max(1.25rem,calc((100vw_-_80rem)/2_+_1.25rem))] lg:pr-16">
-          <div className="absolute inset-0 dots-w opacity-40" aria-hidden="true" />
+        <div className="relative flex items-center overflow-hidden bg-gradient-to-br from-charcoal via-[#1b2a31] to-[#0b1418] px-5 py-16 sm:px-8 lg:py-24 lg:pl-[max(1.25rem,calc((100vw_-_80rem)/2_+_1.25rem))] lg:pr-16">
+          <div className="absolute inset-0 dots-w opacity-30" aria-hidden="true" />
+          <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-teal/15 blur-3xl" aria-hidden="true" />
           <div className="relative max-w-xl">
             <Eyebrow light>{eyebrow}</Eyebrow>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-white mt-3">{title}</h2>

@@ -1,6 +1,5 @@
-import { ArrowRight, BedDouble, CalendarDays, Check, Clock, Eye, HeartHandshake, HeartPulse, MessagesSquare, ShieldCheck, Stethoscope, Target } from 'lucide-react'
+import { ArrowRight, BedDouble, CalendarDays, Clock, Eye, HeartHandshake, HeartPulse, MessagesSquare, ShieldCheck, Stethoscope, Target } from 'lucide-react'
 import PageHero from '../components/PageHero'
-import CtaBand from '../components/CtaBand'
 import Reveal from '../components/Reveal'
 import Eyebrow from '../components/Eyebrow'
 import Button from '../components/Button'
@@ -17,7 +16,23 @@ const PILLARS = [
   { icon: Eye, title: 'Our Vision', body: 'To be a trusted healthcare provider known for patient-centred care and continuous improvement.' },
 ]
 
-const VALUES = ['Compassion', 'Integrity', 'Professionalism', 'Respect', 'Patient safety']
+function FoundationCard({ icon: Icon, title, body, index, delay }) {
+  return (
+    <Reveal delay={delay} className="relative flex flex-col overflow-hidden rounded-3xl bg-charcoal p-8 text-white shadow-lg lg:p-10">
+      <div className="absolute inset-0 dots-w opacity-25" aria-hidden="true" />
+      <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-teal/15 blur-2xl" aria-hidden="true" />
+      <div className="relative flex flex-1 flex-col">
+        <div className="flex items-start justify-between gap-4">
+          <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white/10 text-white ring-1 ring-white/15"><Icon size={22} /></span>
+          <span className="font-display text-4xl font-bold text-white/10">{index}</span>
+        </div>
+        <h3 className="mt-8 font-display text-2xl font-bold text-white">{title}</h3>
+        <p className="mt-3 leading-relaxed text-white/70">{body}</p>
+        <span className="mt-8 h-1 w-12 rounded-full bg-teal" aria-hidden="true" />
+      </div>
+    </Reveal>
+  )
+}
 
 const APPROACH = [
   [HeartHandshake, 'Respect for every patient', 'Create a welcoming experience in which patients are treated with dignity.'],
@@ -73,32 +88,22 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-5">
           <div className="max-w-3xl mb-12">
             <Eyebrow>Our Foundation</Eyebrow>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-charcoal mt-3">Mission, vision &amp; values</h2>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-charcoal mt-3">Our mission &amp; vision</h2>
             <p className="mt-4 text-lg text-ink/65">The principles that guide our care and service to the community.</p>
           </div>
-          <div className="grid lg:grid-cols-3 gap-6">
-            {PILLARS.map(({ icon: Icon, title, body }, i) => (
-              <Reveal key={title} delay={i * 80} className="rounded-3xl bg-white p-8 shadow-sm">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-teal-light text-teal-dark"><Icon size={22} /></span>
-                <h3 className="mt-6 font-display text-2xl font-bold text-charcoal">{title}</h3>
-                <p className="mt-3 leading-relaxed text-ink/65">{body}</p>
-              </Reveal>
-            ))}
-            <Reveal delay={160} className="relative overflow-hidden rounded-3xl bg-primary p-8 text-white shadow-lg">
-              <div className="absolute inset-0 dots-w opacity-30" aria-hidden="true" />
-              <div className="relative">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white/10 text-teal"><ShieldCheck size={22} /></span>
-                <h3 className="mt-6 font-display text-2xl font-bold text-white">Our Values</h3>
-                <ul className="mt-4 space-y-3">
-                  {VALUES.map((v) => (
-                    <li key={v} className="flex items-center gap-3 text-white/85">
-                      <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-teal text-charcoal"><Check size={13} /></span>
-                      {v}
-                    </li>
-                  ))}
-                </ul>
+          <div className="grid gap-6 lg:grid-cols-3 lg:items-stretch">
+            <FoundationCard {...PILLARS[0]} index="01" delay={0} />
+
+            <Reveal delay={80} className="relative min-h-[320px] overflow-hidden rounded-3xl lg:min-h-full">
+              <img src="/images/nurse.jpg" alt="A nurse caring for a patient at Lilongwe Adventist Hospital" className="absolute inset-0 h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0b1418]/85 via-[#0b1418]/15 to-transparent" aria-hidden="true" />
+              <div className="absolute inset-x-6 bottom-6 text-white">
+                <p className="text-[10px] font-semibold uppercase tracking-[.2em] text-teal">Since 1983</p>
+                <p className="mt-1.5 font-display text-xl font-bold leading-snug">Care with purpose, close to home.</p>
               </div>
             </Reveal>
+
+            <FoundationCard {...PILLARS[1]} index="02" delay={160} />
           </div>
         </div>
       </section>
@@ -124,14 +129,6 @@ export default function About() {
           ))}
         </div>
       </section>
-
-      <CtaBand
-        eyebrow="Visit Us"
-        title="Your healthcare journey starts here."
-        text="Explore the services available at Lilongwe Adventist Hospital or contact the hospital to enquire about your healthcare needs."
-        photo="/images/insurance.jpg"
-        alt="Doctor consulting a patient at Lilongwe Adventist Hospital"
-      />
     </>
   )
 }

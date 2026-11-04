@@ -35,9 +35,8 @@ export function LogoMark({ className = 'h-9 w-9 sm:h-10 sm:w-10', mono = false }
 export default function Logo({ light = false, markClassName = 'h-9 w-9 sm:h-10 sm:w-10', className = '' }) {
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <LogoMark className={`shrink-0 ${markClassName}`} />
       <span className="flex flex-col">
-        <span className={`font-display text-[19px] font-bold leading-none tracking-tight ${light ? 'text-white' : 'text-primary'}`}>
+        <span className={`font-display text-[19px] font-bold leading-none tracking-tight ${light ? 'text-white' : 'text-charcoal'}`}>
           Lilongwe
         </span>
         <span className={`mt-1.5 text-[9px] font-semibold uppercase leading-none tracking-[.16em] ${light ? 'text-teal' : 'text-teal-dark'}`}>

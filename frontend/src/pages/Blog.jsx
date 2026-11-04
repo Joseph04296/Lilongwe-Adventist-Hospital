@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import PageHero from '../components/PageHero'
-import CtaBand from '../components/CtaBand'
 import Eyebrow from '../components/Eyebrow'
 import PostCard from '../components/PostCard'
 import { TIPS } from '../data/site'
@@ -51,14 +50,6 @@ export default function Blog() {
 
         <p className="mt-10 text-sm text-ink/50">General information only — it isn’t a substitute for professional medical advice. Please consult our team about your own health.</p>
       </section>
-
-      <CtaBand
-        eyebrow="Your health"
-        title="Have a health concern?"
-        text="Our team is available 24 hours a day, 7 days a week. Book a consultation or call reception for guidance."
-        photo="/images/happy-doc.jpg"
-        alt="A clinician at Lilongwe Adventist Hospital"
-      />
     </>
   )
 }

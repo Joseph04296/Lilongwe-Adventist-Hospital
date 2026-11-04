@@ -4,8 +4,8 @@ import Button from '../components/Button'
 
 const SLIDES = [
   { src: '/images/slider1.jpg', alt: 'Care team at Lilongwe Adventist Hospital' },
-  { src: '/images/slider2.jpg', alt: 'Clinician with a patient at Lilongwe Adventist Hospital' },
-  { src: '/images/slider3.jpg', alt: 'Doctor caring for a patient at Lilongwe Adventist Hospital' },
+  { src: '/images/hero.jpg', alt: 'Clinician with a patient at Lilongwe Adventist Hospital' },
+  { src: '/images/hero6.jpg', alt: 'Doctor caring for a patient at Lilongwe Adventist Hospital' },
 ]
 
 export default function Hero() {

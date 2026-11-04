@@ -13,10 +13,10 @@ export default function Header() {
     `px-3 py-2 rounded-lg text-[15px] font-medium ${isActive ? 'text-primary' : 'text-charcoal/70 hover:text-primary'}`
   return (
     <header className="sticky top-0 z-50">
-      <div className="bg-white text-charcoal/70 border-b border-slate-200 text-xs sm:text-sm">
+      <div className="bg-charcoal text-white/70 text-xs sm:text-sm">
         <div className="max-w-7xl mx-auto px-5 py-2 flex items-center justify-between gap-3">
-          <a href={tel} className="hover:text-primary transition">{PHONE_MAIN}</a>
-          <a href={DIRECTIONS} target="_blank" rel="noreferrer" className="hidden sm:block hover:text-primary transition">{H.address}</a>
+          <a href={tel} className="hover:text-teal transition">{PHONE_MAIN}</a>
+          <a href={DIRECTIONS} target="_blank" rel="noreferrer" className="hidden sm:block hover:text-teal transition">{H.address}</a>
         </div>
       </div>
       <div className="bg-white/95 backdrop-blur border-b border-slate-200">
@@ -26,13 +26,13 @@ export default function Header() {
             {NAV.map(([to, l]) => <NavLink key={to} to={to} end={to === '/'} className={link}>{l}</NavLink>)}
           </nav>
           <div className="flex items-center gap-2 justify-self-end">
-            <Button to="/book" variant="teal" size="sm" className="hidden lg:inline-flex">Book an Appointment</Button>
+            <span className="hidden lg:inline-flex"><Button to="/book" variant="teal" size="sm">Book an Appointment</Button></span>
             <button className="lg:hidden p-2 text-charcoal" onClick={() => setOpen(!open)} aria-label="Menu">{open ? <X /> : <Menu />}</button>
           </div>
         </div>
         {open && <div className="lg:hidden border-t border-slate-200 bg-white px-4 py-3 flex flex-col gap-1" onClick={() => setOpen(false)}>
           {NAV.map(([to, l]) => <NavLink key={to} to={to} end={to === '/'} className={mobileLink}>{l}</NavLink>)}
-          <Button to="/book" variant="teal" size="sm" className="mt-2 justify-center">Book an Appointment</Button>
+          <Button to="/book" variant="teal" size="sm" className="mt-2 w-full justify-center">Book an Appointment</Button>
         </div>}
       </div>
     </header>
