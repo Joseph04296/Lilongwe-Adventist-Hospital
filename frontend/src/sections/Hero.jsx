@@ -40,7 +40,7 @@ export default function Hero() {
             <Clock3 size={14} className="text-teal" />
             Open 24/7
           </div>
-          <h1 className="max-w-3xl font-display text-5xl font-semibold leading-[1.03] tracking-tight text-white sm:text-6xl md:text-7xl">
+          <h1 className="w-full max-w-3xl break-words font-display text-[clamp(2rem,10vw,4.5rem)] font-semibold leading-[1.03] tracking-tight text-white md:text-7xl">
             Compassionate care,
             <span className="mt-1 block text-teal">close to home.</span>
           </h1>
