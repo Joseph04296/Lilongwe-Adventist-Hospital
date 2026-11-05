@@ -33,7 +33,7 @@ export default function PostCard({ tip, delay = 0 }) {
           </div>
           <div className="flex flex-1 flex-col p-6">
             <p className="text-xs font-medium text-ink/55">{date.full}<span className="mx-2" aria-hidden="true">·</span>{duration}</p>
-            <h3 className="mt-2 font-display text-xl font-bold leading-snug text-charcoal">{tip.title}</h3>
+            <h3 className="mt-2 font-display text-xl font-semibold leading-snug text-charcoal">{tip.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-ink/65">{tip.text}</p>
             <span className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-bold text-teal-dark">
               Read more <ArrowRight size={16} />

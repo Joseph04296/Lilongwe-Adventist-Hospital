@@ -16,7 +16,7 @@ export default function WhyChooseUs() {
       <div className="max-w-7xl mx-auto px-5 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <Reveal>
           <Eyebrow>Why Choose Us</Eyebrow>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-charcoal mt-3 mb-5">Trusted private healthcare in the heart of Lilongwe.</h2>
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-charcoal mt-3 mb-5">Trusted private healthcare</h2>
           <p className="text-ink/70 text-lg leading-relaxed">For over four decades, Lilongwe Adventist Hospital has cared for individuals and families across Malawi — combining experienced clinicians, on-site diagnostics and a commitment to treating every patient with dignity.</p>
           <div className="grid sm:grid-cols-2 gap-x-8 gap-y-7 mt-9">
             {REASONS.map(({ icon: Icon, title, text }) => (
@@ -29,7 +29,6 @@ export default function WhyChooseUs() {
               </div>
             ))}
           </div>
-          <Button to="/about" className="mt-10">Discover More <ArrowRight size={18} /></Button>
         </Reveal>
 
         <Reveal delay={120} className="relative">

@@ -26,7 +26,7 @@ export default function Doctors() {
                 <Photo src="/images/doctor.jpg" icon={d.icon} alt={d.name} className="absolute inset-0 w-full h-full transition duration-500 group-hover:scale-105" />
               </div>
               <div className="flex flex-col flex-1 p-6">
-                <h3 className="font-display text-xl font-bold text-charcoal">{d.name}</h3>
+                <h3 className="font-display text-xl font-semibold text-charcoal">{d.name}</h3>
                 <p className="text-sm font-semibold text-teal-dark mt-1">{d.specialty}</p>
                 <p className="text-sm text-ink/55 mt-1">{d.qualifications}</p>
                 <div className="mt-auto pt-5">

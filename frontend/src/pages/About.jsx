@@ -26,7 +26,7 @@ function FoundationCard({ icon: Icon, title, body, index, delay }) {
           <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white/10 text-white ring-1 ring-white/15"><Icon size={22} /></span>
           <span className="font-display text-4xl font-bold text-white/10">{index}</span>
         </div>
-        <h3 className="mt-8 font-display text-2xl font-bold text-white">{title}</h3>
+        <h3 className="mt-8 font-display text-2xl font-semibold text-white">{title}</h3>
         <p className="mt-3 leading-relaxed text-white/70">{body}</p>
         <span className="mt-8 h-1 w-12 rounded-full bg-teal" aria-hidden="true" />
       </div>
@@ -69,7 +69,7 @@ export default function About() {
 
         <Reveal delay={120} className="order-1 lg:order-2">
           <Eyebrow>Who We Are</Eyebrow>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-charcoal mt-3 mb-5">Healthcare with purpose, close to home.</h2>
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-charcoal mt-3 mb-5">Healthcare with purpose, close to home.</h2>
           <p className="text-ink/70 text-lg leading-relaxed">Lilongwe Adventist Hospital is a private healthcare facility located on Presidential Way in Lilongwe, Malawi. Founded in 1983, it operates 24 hours a day, 7 days a week, offering both inpatient and outpatient services.</p>
           <p className="text-ink/70 text-lg leading-relaxed mt-4">From everyday consultations to specialist care, our focus is on treating every patient with dignity, clear communication and professionalism.</p>
           <div className="mt-9 grid grid-cols-2 gap-4">
@@ -88,7 +88,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-5">
           <div className="max-w-3xl mb-12">
             <Eyebrow>Our Foundation</Eyebrow>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-charcoal mt-3">Our mission &amp; vision</h2>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold text-charcoal mt-3">Our mission &amp; vision</h2>
             <p className="mt-4 text-lg text-ink/65">The principles that guide our care and service to the community.</p>
           </div>
           <div className="grid gap-6 lg:grid-cols-3 lg:items-stretch">
@@ -111,7 +111,7 @@ export default function About() {
       <section className="max-w-7xl mx-auto px-5 py-24">
         <div className="max-w-3xl">
           <Eyebrow>Our Approach</Eyebrow>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-charcoal mt-3">Our approach to patient care</h2>
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-charcoal mt-3">Our approach to patient care</h2>
           <p className="mt-5 text-lg leading-relaxed text-ink/65">Principles that shape the experience we aim to provide at every visit.</p>
         </div>
         <div className="grid sm:grid-cols-2 gap-6 mt-12">

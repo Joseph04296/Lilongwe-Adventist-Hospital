@@ -19,7 +19,7 @@ export default function AboutPreview() {
         </Reveal>
         <Reveal delay={120} className="order-1 lg:order-2">
           <Eyebrow>About Us</Eyebrow>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-charcoal mt-3 mb-5">A private hospital on Presidential Way, Lilongwe</h2>
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-charcoal mt-3 mb-5">A private hospital on Presidential Way, Lilongwe</h2>
           <p className="text-ink/70 text-lg leading-relaxed">Founded in 1983, Lilongwe Adventist Hospital is a private healthcare facility operating 24 hours a day, 7 days a week. We support individuals and families through accessible services and clear communication — offering both inpatient and outpatient care.</p>
           <div className="grid sm:grid-cols-2 gap-x-6 gap-y-6 mt-9">
             {POINTS.map(([Icon, t, d]) => (

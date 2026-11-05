@@ -42,7 +42,7 @@ export default function ServiceDetail() {
 
             <div className="mt-16">
               <Eyebrow>Service overview</Eyebrow>
-              <h2 className="mt-3 font-display text-3xl md:text-4xl font-bold text-charcoal">What is {service.title}?</h2>
+              <h2 className="mt-3 font-display text-3xl md:text-4xl font-semibold text-charcoal">What is {service.title}?</h2>
               <p className="mt-4 text-lg leading-relaxed text-ink/70">{service.overview}</p>
             </div>
 
@@ -54,7 +54,7 @@ export default function ServiceDetail() {
             </blockquote>
 
             <div className="mt-12">
-              <h3 className="font-display text-2xl font-bold text-charcoal">Conditions we treat</h3>
+              <h3 className="font-display text-2xl font-semibold text-charcoal">Conditions we treat</h3>
               <ul className="mt-5 grid sm:grid-cols-2 gap-3">
                 {service.conditions.map((c) => (
                   <li key={c} className="flex items-start gap-3 rounded-xl border border-slate-200 p-4 text-sm leading-relaxed text-ink/70">
@@ -66,7 +66,7 @@ export default function ServiceDetail() {
             </div>
 
             <div className="mt-12">
-              <h3 className="font-display text-2xl font-bold text-charcoal">Treatments &amp; procedures</h3>
+              <h3 className="font-display text-2xl font-semibold text-charcoal">Treatments &amp; procedures</h3>
               <ul className="mt-5 space-y-3">
                 {service.treatments.map((t) => (
                   <li key={t} className="flex items-start gap-3 text-ink/70 leading-relaxed">
@@ -79,7 +79,7 @@ export default function ServiceDetail() {
 
             <div className="mt-14">
               <Eyebrow>What to expect</Eyebrow>
-              <h3 className="mt-3 font-display text-2xl font-bold text-charcoal">How it works</h3>
+              <h3 className="mt-3 font-display text-2xl font-semibold text-charcoal">How it works</h3>
               <div className="mt-6 grid sm:grid-cols-3 gap-4">
                 {STEPS.map(([Icon, title, text], i) => (
                   <Reveal key={title} delay={i * 80} className="relative rounded-2xl bg-mist p-6">
@@ -100,7 +100,7 @@ export default function ServiceDetail() {
 
           <aside className="space-y-6 lg:sticky lg:top-32 h-fit">
             <div className="rounded-2xl border border-slate-200 p-6">
-              <h3 className="font-display text-xl font-bold text-charcoal">All services</h3>
+              <h3 className="font-display text-xl font-semibold text-charcoal">All services</h3>
               <nav className="mt-4 flex flex-col gap-1">
                 {SERVICES.map(({ slug: s, title, icon: Icon }) => (
                   <Link
@@ -120,7 +120,7 @@ export default function ServiceDetail() {
             <div className="relative overflow-hidden rounded-2xl bg-primary p-6 text-white">
               <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-teal/20 blur-2xl" aria-hidden="true" />
               <div className="relative">
-                <h3 className="font-display text-xl font-bold text-white">Need help choosing?</h3>
+                <h3 className="font-display text-xl font-semibold text-white">Need help choosing?</h3>
                 <p className="mt-2 text-sm leading-relaxed text-white/70">Our reception team can help you find the right clinic and a time that works for you.</p>
                 <a href={tel} className="mt-5 flex items-center gap-3 text-sm font-semibold text-white transition hover:text-teal">
                   <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/10"><Phone size={16} /></span>

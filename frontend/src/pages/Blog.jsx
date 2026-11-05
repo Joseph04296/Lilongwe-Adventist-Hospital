@@ -26,7 +26,7 @@ export default function Blog() {
         <div className="flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <Eyebrow>Our recent posts</Eyebrow>
-            <h2 className="mt-3 font-display text-3xl md:text-4xl font-bold text-charcoal">Health advice from our team</h2>
+            <h2 className="mt-3 font-display text-3xl md:text-4xl font-semibold text-charcoal">Health advice from our team</h2>
             <p className="mt-4 text-lg leading-relaxed text-ink/65">Small, consistent choices make a real difference. Browse our latest articles below.</p>
           </div>
           <div className="flex flex-wrap gap-2">

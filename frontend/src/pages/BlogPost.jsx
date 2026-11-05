@@ -34,14 +34,14 @@ export default function BlogPost() {
 
           <div className="mt-8">
             <Eyebrow>{tip.tag}</Eyebrow>
-            <h1 className="mt-3 font-display text-3xl md:text-4xl font-bold text-charcoal">{tip.title}</h1>
+            <h1 className="mt-3 font-display text-3xl md:text-4xl font-semibold text-charcoal">{tip.title}</h1>
             <p className="mt-4 text-lg leading-relaxed text-ink/70">{tip.text}</p>
           </div>
 
           <p className="mt-8 text-lg leading-relaxed text-ink/70">{tip.overview}</p>
 
           <div className="mt-12">
-            <h2 className="font-display text-2xl font-bold text-charcoal">Practical steps</h2>
+            <h2 className="font-display text-2xl font-semibold text-charcoal">Practical steps</h2>
             <ol className="mt-5 space-y-4">
               {tip.points.map((point, i) => (
                 <li key={point} className="flex gap-4 rounded-2xl bg-mist p-5">
@@ -53,7 +53,7 @@ export default function BlogPost() {
           </div>
 
           <div className="mt-12 rounded-2xl border border-teal/30 bg-teal-light/50 p-6 md:p-7">
-            <h3 className="font-display text-xl font-bold text-charcoal">When to seek care</h3>
+            <h3 className="font-display text-xl font-semibold text-charcoal">When to seek care</h3>
             <p className="mt-2 text-sm leading-relaxed text-ink/65">
               If your symptoms are severe, sudden or not improving, contact the hospital. Our team is available 24 hours a day, 7 days a week.
             </p>
@@ -66,7 +66,7 @@ export default function BlogPost() {
 
         <aside className="space-y-6 lg:sticky lg:top-32 h-fit">
           <div className="rounded-2xl border border-slate-200 p-6">
-            <h2 className="font-display text-xl font-bold text-charcoal">More articles</h2>
+            <h2 className="font-display text-xl font-semibold text-charcoal">More articles</h2>
             <nav className="mt-4 flex flex-col gap-1">
               {TIPS.filter((item) => item.slug !== slug).map((item) => (
                 <Link

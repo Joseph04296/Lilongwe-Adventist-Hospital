@@ -41,7 +41,7 @@ export default function PatientInfo() {
             <div key={item.title} className="bg-white rounded-xl border border-slate-200 p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="w-10 h-10 rounded-lg bg-teal-light text-teal-dark grid place-items-center"><item.icon size={20} /></span>
-                <h3 className="font-bold text-lg text-charcoal">{item.title}</h3>
+                <h3 className="font-semibold text-lg text-charcoal">{item.title}</h3>
               </div>
               <p className="text-ink/70 leading-relaxed">{item.text}</p>
             </div>
@@ -59,7 +59,7 @@ export default function PatientInfo() {
           </Reveal>
           <Reveal delay={120}>
             <Eyebrow>Payment &amp; Insurance</Eyebrow>
-            <h2 className="mt-3 font-display text-3xl md:text-4xl font-bold text-charcoal">Check your cover before you visit</h2>
+            <h2 className="mt-3 font-display text-3xl md:text-4xl font-semibold text-charcoal">Check your cover before you visit</h2>
             <p className="mt-4 text-ink/70 leading-relaxed">
               Insurance benefits and provider requirements vary by policy. Please contact our administration team before your visit to check whether your scheme is accepted and what your cover includes.
             </p>

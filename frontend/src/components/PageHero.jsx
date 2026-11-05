@@ -39,7 +39,7 @@ export default function PageHero({
                 <span className="h-1.5 w-1.5 rounded-full bg-teal" aria-hidden="true" />
                 {kicker || 'Lilongwe Adventist Hospital'}
               </span>
-              <h1 className="mt-5 font-display text-4xl md:text-5xl font-bold leading-[1.05] tracking-tight">{title}</h1>
+              <h1 className="mt-5 font-display text-4xl md:text-5xl font-semibold leading-[1.05] tracking-tight">{title}</h1>
               {text && <p className="mt-5 max-w-xl text-base md:text-lg leading-relaxed text-white/80">{text}</p>}
               {(children || showActions) && (
                 <div className="mt-8 flex flex-wrap gap-3">
@@ -89,7 +89,7 @@ export default function PageHero({
               <span className="h-1.5 w-1.5 rounded-full bg-teal" aria-hidden="true" />
               {kicker || 'Lilongwe Adventist Hospital'}
             </span>
-            <h1 className="mt-5 font-display text-4xl md:text-5xl font-bold leading-[1.05] tracking-tight">{title}</h1>
+            <h1 className="mt-5 font-display text-4xl md:text-5xl font-semibold leading-[1.05] tracking-tight">{title}</h1>
             {text && <p className="mt-5 max-w-xl text-base md:text-lg leading-relaxed text-white/80">{text}</p>}
             {(children || showActions) && (
               <div className="mt-8 flex flex-wrap gap-3">

@@ -1,28 +1,30 @@
-import { ArrowRight } from 'lucide-react'
-import Photo from './Photo'
-import Eyebrow from './Eyebrow'
+import { ArrowRight, PhoneCall } from 'lucide-react'
 import Button from './Button'
-import { P } from '../data/site'
+import { tel } from '../data/site'
+import { Clock3 } from 'lucide-react'
 
-export default function CtaBand({ eyebrow, title, text, photo = P.emergency, alt = '' }) {
+export default function CtaBand({ eyebrow, title, text, photo, alt = '' }) {
   return (
-    <section className="overflow-hidden">
-      <div className="grid lg:grid-cols-2 lg:min-h-[520px]">
-        <div className="relative flex items-center overflow-hidden bg-gradient-to-br from-charcoal via-[#1b2a31] to-[#0b1418] px-5 py-16 sm:px-8 lg:py-24 lg:pl-[max(1.25rem,calc((100vw_-_80rem)/2_+_1.25rem))] lg:pr-16">
-          <div className="absolute inset-0 dots-w opacity-30" aria-hidden="true" />
-          <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-teal/15 blur-3xl" aria-hidden="true" />
-          <div className="relative max-w-xl">
-            <Eyebrow light>{eyebrow}</Eyebrow>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-white mt-3">{title}</h2>
-            <p className="mt-4 text-white/80 text-lg leading-relaxed">{text}</p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Button to="/book" variant="teal">Book an appointment <ArrowRight size={18} /></Button>
-              <Button to="/book" variant="ghostLight">Contact us</Button>
+    <section className="bg-teal-light px-5 py-16 sm:py-24">
+      <div className="mx-auto grid max-w-7xl overflow-hidden rounded-3xl bg-[#e9f3f7] shadow-[0_24px_70px_-38px_rgba(8,58,84,.4)] lg:grid-cols-[1.05fr_.95fr]">
+        <div className="flex items-center px-6 py-10 sm:px-10 sm:py-14 lg:px-14">
+          <div className="max-w-xl">
+            <p className="text-xs font-semibold uppercase tracking-[.2em] text-teal-dark">{eyebrow}</p>
+            <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-charcoal sm:text-4xl md:text-5xl">{title}</h2>
+            <p className="mt-4 max-w-lg text-base leading-relaxed text-ink/70 sm:text-lg">{text}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button to="/book">Book an appointment <ArrowRight size={18} /></Button>
+              <Button href={tel} variant="outline"><PhoneCall size={17} /> Call reception</Button>
+            </div>
+            <div className="mt-7 flex items-center gap-2 text-sm font-medium text-primary/80">
+              <Clock3 size={17} className="text-teal-dark" />
+              Open 24 hours a day, 7 days a week
             </div>
           </div>
         </div>
-        <div className="relative min-h-[280px] lg:min-h-full">
-          <Photo src={photo} alt={alt} className="absolute inset-0 h-full w-full" />
+        <div className="relative min-h-[260px] lg:min-h-[440px]">
+          <img src={photo} alt={alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0b2530]/35 via-transparent to-transparent lg:bg-gradient-to-l lg:from-transparent lg:via-transparent lg:to-[#e9f3f7]/20" aria-hidden="true" />
         </div>
       </div>
     </section>
